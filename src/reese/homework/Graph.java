@@ -1,5 +1,7 @@
 package reese.homework;
 
+import com.sun.xml.internal.ws.util.xml.NodeListIterator;
+
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Set;
@@ -47,6 +49,9 @@ public class Graph
 
     public boolean reachable(Set<Integer> sources, Set<Integer> targets)
     {
+        //set a boolean variable to return for method reachable
+        boolean allReachable = false;
+
         if (sources == null || targets == null) throw new IllegalArgumentException();
         // postcondition: returns true if
         //                   (1) "sources" does not contain an illegal node,
@@ -55,18 +60,38 @@ public class Graph
 //                           node "n" in set "sources" such that there is a directed
 //                           path that starts at "n" and ends at "m" in "this"; and
 //                           false otherwise
-        
+        if(checkNodes(sources) == false || checkNodes(targets) == false) throw new IllegalArgumentException();
 
+        //create iterators to iterate through Sets as specified in conditions
+        Iterator<Integer> n = sources.iterator();
+        Iterator<Integer> m = targets.iterator();
 
-        return false;
+        while(m.hasNext())
+        {
+            while(n.hasNext())
+            {
+                if(edges[n.next()][m.next()] == true)
+                {
+                    allReachable = true;
+                }
+                else
+                {
+                    allReachable = false;
+                    break;
+                }
+            }
+
+        }
+
+        return allReachable;
     }
 
     private boolean checkNodes(Set<Integer> nodes)
     {
-        Iterator<Integer> iterator = nodes.iterator();
-        while (iterator.hasNext())
+        Iterator<Integer> nodesIterator = nodes.iterator();
+        while (nodesIterator.hasNext())
         {
-            if(numNodes < iterator.next())
+            if(numNodes < nodesIterator.next())
             {
                 return false;
             }
