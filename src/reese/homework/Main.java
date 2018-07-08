@@ -15,8 +15,7 @@ public class Graph
     public Graph(int size)
     {
         numNodes = size;
-        // your code goes here
-        // ...
+        edges = new boolean[size][size];
     }
 
     public String toString()
