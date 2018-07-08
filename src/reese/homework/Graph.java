@@ -41,8 +41,7 @@ public class Graph
     public void addEdge(int from, int to)
     {
         // postcondition: adds a directed edge "from" -> "to" to this graph
-        // your code goes here
-        //...
+        edges[from][to] = true;
     }
 
     public boolean reachable(Set<Integer> sources, Set<Integer> targets)
