@@ -1,7 +1,5 @@
 package reese.homework;
 
-import com.sun.xml.internal.ws.util.xml.NodeListIterator;
-
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Set;
@@ -44,7 +42,14 @@ public class Graph
     public void addEdge(int from, int to)
     {
         // postcondition: adds a directed edge "from" -> "to" to this graph
-        edges[from][to] = true;
+        if(numNodes > 0)
+        {
+            edges[from][to] = true;
+        }
+        else
+        {
+            System.out.println("Cannot add edges to a graph of size < 1");
+        }
     }
 
     public boolean reachable(Set<Integer> sources, Set<Integer> targets)
