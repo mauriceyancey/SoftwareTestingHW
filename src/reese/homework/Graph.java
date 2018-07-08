@@ -16,6 +16,15 @@ public class Graph
     {
         numNodes = size;
         edges = new boolean[size][size];
+
+//        Initialize edges to FALSE so that it is non-null
+        for(int i = 0; i < size; i++)
+        {
+            for(int j = 0; j < size; j++)
+            {
+                edges[i][j] = false;
+            }
+        }
     }
 
     public String toString()
