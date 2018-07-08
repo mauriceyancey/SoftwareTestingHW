@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad5c47e0-3f5c-43f6-8e47-bdc41a8b7e87" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/reese/homework/Graph.java" afterPath="$PROJECT_DIR$/src/reese/homework/Graph.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -19,11 +18,11 @@
         <entry file="file://$PROJECT_DIR$/src/reese/homework/Graph.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="593">
-              <caret line="43" column="31" lean-forward="false" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
+              <caret line="57" column="8" lean-forward="false" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#795#796#0" expanded="true" />
-                <element signature="e#889#890#0" expanded="true" />
+                <element signature="e#822#823#0" expanded="true" />
+                <element signature="e#916#917#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -225,11 +224,11 @@
     <entry file="file://$PROJECT_DIR$/src/reese/homework/Graph.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="593">
-          <caret line="43" column="31" lean-forward="false" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
+          <caret line="57" column="8" lean-forward="false" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#795#796#0" expanded="true" />
-            <element signature="e#889#890#0" expanded="true" />
+            <element signature="e#822#823#0" expanded="true" />
+            <element signature="e#916#917#0" expanded="true" />
           </folding>
         </state>
       </provider>

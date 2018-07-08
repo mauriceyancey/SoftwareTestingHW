@@ -1,6 +1,7 @@
 package reese.homework;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Set;
 
 public class Graph
@@ -54,8 +55,22 @@ public class Graph
 //                           node "n" in set "sources" such that there is a directed
 //                           path that starts at "n" and ends at "m" in "this"; and
 //                           false otherwise
-// your code goes here
-//...
+        
+
+
         return false;
+    }
+
+    private boolean checkNodes(Set<Integer> nodes)
+    {
+        Iterator<Integer> iterator = nodes.iterator();
+        while (iterator.hasNext())
+        {
+            if(numNodes < iterator.next())
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
