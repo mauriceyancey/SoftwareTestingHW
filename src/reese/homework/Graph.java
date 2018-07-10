@@ -15,6 +15,8 @@ public class Graph
     //                  numNodes is number of rows in "edges"
     public Graph(int size)
     {
+        if(size < 0) throw new NumberFormatException();
+
         numNodes = size;
         edges = new boolean[size][size];
 
@@ -63,7 +65,7 @@ public class Graph
 //                           (2) "targets" does not contain an illegal node, and
 //                           (3) for each node "m" in set "targets", there is some
 //                           node "n" in set "sources" such that there is a directed
-//                           path that starts at "n" and ends at "m" in "this"; and
+//                           path that starts at "n" and ends at "m" in "this" or "m == n"; and
 //                           false otherwise
         if(checkNodes(sources) == false || checkNodes(targets) == false) throw new IllegalArgumentException();
 
@@ -71,6 +73,10 @@ public class Graph
         Iterator<Integer> n = sources.iterator();
         Iterator<Integer> m = targets.iterator();
 
+        //returns true if sources and targets are the same nodes
+        if(sources.equals(targets)) return true;
+
+        //check to see if there are edges from sources to all targets
         while(m.hasNext())
         {
             while(n.hasNext())
