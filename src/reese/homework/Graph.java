@@ -13,6 +13,9 @@ public class Graph
     // class invariant: fields "edges" is non-null;
     //                  "edges" is a square matrix;
     //                  numNodes is number of rows in "edges"
+
+    //Question 1.1
+    //Implementing Graph
     public Graph(int size)
     {
         if(size < 0) throw new NumberFormatException();
@@ -41,6 +44,8 @@ public class Graph
         return toString().equals(o.toString());
     }
 
+    //Question 1.2
+    //Implementing addEdge
     public void addEdge(int from, int to)
     {
         // postcondition: adds a directed edge "from" -> "to" to this graph
@@ -54,6 +59,8 @@ public class Graph
         }
     }
 
+    //Question 1.3
+    //Implementing reachable
     public boolean reachable(Set<Integer> sources, Set<Integer> targets)
     {
         //set a boolean variable to return for method reachable

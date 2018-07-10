@@ -7,6 +7,8 @@ import java.util.TreeSet;
 import static org.junit.jupiter.api.Assertions.*;
 
 
+//Question 2
+//Testing Graph implementation
 public class GraphTester
 {
     // tests for method "addEdge" in class "Graph"
