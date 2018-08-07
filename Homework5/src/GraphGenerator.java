@@ -33,16 +33,11 @@ public class GraphGenerator {
                 System.out.println(inst);
                 //Don't set a target for nodes with method invocations
 
-                //TODO: Refactor this if statement to be an OR between Invoke and Return
-                //TODO: Ask the TA if invokespecial counts toward method invocations since
                 //TODO: Ask the TA if its okay to have nodes pointing to the exit point as having no edges
 
-                if(!inst.toString().contains("invoke"))
+                if(!inst.toString().contains("invoke") && !inst.toString().contains("return"))
                 {
-                    //Dont set a target for nodes that exit that program
-                    if (!inst.toString().contains("return"))
-                    {
-                        //Check if the node has a target
+                      //Check if the node has a target
                         if (inst.toString().contains("if"))
                         {
                             //add the edge for the target node
@@ -54,7 +49,6 @@ public class GraphGenerator {
                         //add an edge to the node that comes after the current node
                         int nextNode = ih.getNext().getPosition();
                         cfg.addEdge(position, nextNode, m, jc);
-                    }
                 }
             }
         }
@@ -81,47 +75,10 @@ public class GraphGenerator {
                 System.out.println(inst);
                 //Don't set a target for nodes with method invocations
 
-                //TODO: Refactor this if statement to be an OR between Invoke and Return
-                //TODO: Ask the TA if invokespecial counts toward method invocations since
                 //TODO: Ask the TA if its okay to have nodes pointing to the exit point as having no edges
 
-                if (!inst.toString().contains("invokespecial"))
+                if (!inst.toString().contains("invokespecial") && !inst.toString().contains("return") && !inst.toString().contains("static"))
                 {
-                    //Dont set a target for nodes that exit that program
-                    if (!inst.toString().contains("return"))
-                    {
-//                        if(inst.toString().contains("static"))
-//                        {
-//                            String target = inst.toString().substring(inst.toString().length() - 1);
-//                            int targetInt = Integer.parseInt(target);
-//                            String targetMethod = cg.getMethodAt(targetInt).toString();
-//                            Visitor visitor = null;
-////                            cg.getMethodAt(targetInt).accept(visitor);
-//                            System.out.println(cg.getMethodAt(targetInt).getConstantPool().toString());
-//                            System.out.println(targetMethod);
-////                            cfg.addEdge(position, targetMethod, m, jc);
-//                        }
-//                        //Check if the node has a target
-//                        if (inst.toString().contains("if"))
-//                        {
-//                            //add the edge for the target node
-//                            String target = inst.toString().substring(inst.toString().length() - 1);
-//                            int targetNode = Integer.parseInt(target);
-//
-//                            cfg.addEdge(position, targetNode, m, jc);
-//                        }
-//                        //add an edge to the node that comes after the current node
-//                        int nextNode = ih.getNext().getPosition();
-//                        System.out.println("position = " + position);
-//                        System.out.println("next node = " +nextNode);
-//                        System.out.println("m is " +m);
-//                        System.out.println("jc is "+jc);
-//                        cfg.addEdge(position, nextNode, m, jc);
-//                        System.out.println(cfg.edges);
-//                        System.out.println("****************************");
-
-                        if(!inst.toString().contains("static"))
-                        {
                             int nextNode = ih.getNext().getPosition();
                             cfg.addEdge(position, nextNode, m, jc);
 
@@ -131,8 +88,6 @@ public class GraphGenerator {
                                 int targetNode = Integer.parseInt(target);
                                 cfg.addEdge(position, targetNode, m, jc);
                             }
-                        }
-                    }
                 }
             }
         }
@@ -141,6 +96,6 @@ public class GraphGenerator {
     }
     public static void main(String[] a) throws ClassNotFoundException {
         GraphGenerator gg = new GraphGenerator();
-//        gg.createCFG("homework.C"); // example invocation of createCFG
+        gg.createCFG("homework.C"); // example invocation of createCFG
         gg.createCFGWithMethodInvocation("homework.D"); // example invocation of createCFGWithMethodInovcation
     } }
