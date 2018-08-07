@@ -111,6 +111,6 @@ public class GraphGenerator {
     }
     public static void main(String[] a) throws ClassNotFoundException {
         GraphGenerator gg = new GraphGenerator();
-//        gg.createCFG("homework.C"); // example invocation of createCFG
+        gg.createCFG("homework.C"); // example invocation of createCFG
         gg.createCFGWithMethodInvocation("homework.D"); // example invocation of createCFGWithMethodInovcation
     } }
