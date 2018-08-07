@@ -30,16 +30,23 @@ public class GraphGenerator {
                 cfg.addNode(position, m, jc);
                 Instruction inst = ih.getInstruction();
                 // your code goes here
-                System.out.println(inst);
-                //Don't set a target for nodes with method invocations
 
-                //TODO: Ask the TA if its okay to have nodes pointing to the exit point as having no edges
+                //check for jsr[_w] and *switch instructions
+                if(!inst.toString().contains("jsr[_w]") || !inst.toString().contains("*switch")) {
 
-                if(!inst.toString().contains("invoke") && !inst.toString().contains("return"))
-                {
-                      //Check if the node has a target
-                        if (inst.toString().contains("if"))
-                        {
+                    //Add an edge to the dummy node
+                    if (inst.toString().contains("return")) {
+
+                        //Add a dummy node if one doesn't already exist
+                        if (!cfg.nodes.contains(-1)) {
+                            cfg.addNode(-1, m, jc);
+                        }
+                        cfg.addEdge(position, -1, m, jc);
+                    }
+
+                    if (!inst.toString().contains("invoke") && !inst.toString().contains("return")) {
+                        //Check if the node has a target
+                        if (inst.toString().contains("if")) {
                             //add the edge for the target node
                             String target = inst.toString().substring(inst.toString().length() - 1);
                             int targetNode = Integer.parseInt(target);
@@ -49,7 +56,9 @@ public class GraphGenerator {
                         //add an edge to the node that comes after the current node
                         int nextNode = ih.getNext().getPosition();
                         cfg.addEdge(position, nextNode, m, jc);
+                    }
                 }
+
             }
         }
 
@@ -71,11 +80,17 @@ public class GraphGenerator {
                 System.out.println(position);
                 cfg.addNode(position, m, jc);
                 Instruction inst = ih.getInstruction();
-                // your code goes here
-                System.out.println(inst);
-                //Don't set a target for nodes with method invocations
 
-                //TODO: Ask the TA if its okay to have nodes pointing to the exit point as having no edges
+                //Add an edge to the dummy node
+                if(inst.toString().contains("return"))
+                {
+                    //Add a dummy node if one doesn't already exist
+                    if(!cfg.nodes.contains(-1))
+                    {
+                        cfg.addNode(-1, m, jc);
+                    }
+                    cfg.addEdge(position, -1, m, jc);
+                }
 
                 if (!inst.toString().contains("invokespecial") && !inst.toString().contains("return") && !inst.toString().contains("static"))
                 {
@@ -96,6 +111,6 @@ public class GraphGenerator {
     }
     public static void main(String[] a) throws ClassNotFoundException {
         GraphGenerator gg = new GraphGenerator();
-        gg.createCFG("homework.C"); // example invocation of createCFG
+//        gg.createCFG("homework.C"); // example invocation of createCFG
         gg.createCFGWithMethodInvocation("homework.D"); // example invocation of createCFGWithMethodInovcation
     } }
